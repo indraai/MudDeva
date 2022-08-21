@@ -1,0 +1,23 @@
+{
+  "name": "@indra.ai/muddeva",
+  "version": "0.0.1",
+  "description": "The Mud Deva",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/indraai/MudDeva.git"
+  },
+  "keywords": [
+    "Mud",
+    "DEVA"
+  ],
+  "author": "Quinn Michaels",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/indraai/MudDeva/issues"
+  },
+  "homepage": "https://github.com/indraai/MudDeva#readme"
+}
