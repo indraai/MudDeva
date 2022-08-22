@@ -23,13 +23,17 @@ const MUD = new Deva({
     },
   },
   vars,
+  // load the listeners from the _listeners file.
   listeners: require('./_listeners.js'),
   modules: {
     game: false,
   },
   deva: {},
+  // load the functions from the _func file.
   func: require('./_func.js'),
+  // load the methods from the _methods file.
   methods: require('./_methods.js'),
+  // custom onError handler.
   onError(e) {
     console.error(e);
   }

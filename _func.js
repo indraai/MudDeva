@@ -1,7 +1,12 @@
 // Copyright (c)2022 Quinn Michaels. All rights reserved.
 
 module.exports = {
-  // send the play command to start a new game
+  /**************
+  func: play
+  params: packet
+  describe: The main function to login/play the mud realm. This will look at your
+  client config to get the username/password and necessary configuration to paly.
+  ***************/
   play(packet) {
 
     // set the variable accounts so we can play with many test accounts and the admin
@@ -26,7 +31,13 @@ module.exports = {
     });
   },
 
-  // write to the telnet agent for mud commands.
+  /**************
+  func: write
+  params: cmd, text
+  describe: The write function takes two parameters cmd and text. The cmd determines
+  if it is sending a command to the server with a text message or just a text
+  message.
+  ***************/
   write(cmd=false, text='') {
     const id = this.uid();
     const orig = text;
@@ -50,6 +61,12 @@ module.exports = {
     });
   },
 
+  /**************
+  func: state
+  params: key
+  describe: Set the state of the mud deva with a value key that aligns to the messages
+  array in the agent variables.
+  ***************/
   state(key) {
     this.vars.state_prev = this.vars.state;
     let value = this.vars.messages[key];
@@ -61,6 +78,12 @@ module.exports = {
     return Promise.resolve(this.vars.state);
   },
 
+  /**************
+  func: terminal
+  params: opts
+  describe: The terminal function will take an options object and then pass the
+  associated values to the terminal for both the socket and the prompt.
+  ***************/
   terminal(opts) {
     if (!opts) return;
     opts.a.text = this.agent.parse(opts.a.text);
@@ -97,9 +120,13 @@ module.exports = {
     });
   },
 
-  // system: broadcast a system message over the which will be recieved by the
-  // socket deva and that will then be broadcast over the clients private socket
-  // to their interface.
+  /**************
+  func: system
+  params: data
+  describe: broadcast a system message over the which will be recieved by the
+  socket deva and that will then be broadcast over the clients private socket
+  to their interface.
+  ***************/
   system(data={}) {
     const id = this.uid();
     data.state = data.state || this.vars.state;
@@ -116,6 +143,12 @@ module.exports = {
     return;
   },
 
+  /**************
+  method: patternMatch
+  params: text, alert
+  describe: The pattern match function is a utility function used to match pattern
+  from the listers portion.
+  ***************/
   patternMatch(text, alert) {
     const reg = new RegExp(alert.reg, 'mi');
     const matcher = {
@@ -126,10 +159,15 @@ module.exports = {
     return matcher.matched ? matcher : false;
   },
 
-  // patternMatchLoop: takes a packet delivered from the patterns function and
-  // loops over the data looking for alert strings as defined in the data.json file
-  // if the loop finds a match from the data.json file then it extracts the string
-  // and forwards it to the socket socket funcntion with the necessary options.
+  /**************
+  func: patternMatchLoop
+  params: opts
+  describe: patternMatchLoop: takes a packet delivered from the patterns
+  function and loops over the data looking for alert strings as defined in the
+  data.json file if the loop finds a match from the data.json file then it
+  extracts the string and forwards it to the socket socket funcntion with the
+  necessary options.
+  ***************/
   patternMatchLoop(opts) {
     const {patterns} = this.vars.adventure;
     const { prompt, socket, patternMatch } = this.func;
@@ -151,13 +189,17 @@ module.exports = {
     if (!patternTrack) return Promise.resolve(opts);
     return this.func.patternMatchLoop(opts)
   },
-  // patterns: _listeners.js when the game server delivers a packet.
-  // when the packet is recieved from listeners this fires and then runs a
-  // recursive loop function alertsMathLoop
+
+  /**************
+  func: patterns
+  params: packet
+  describe: _listeners.js when the game server delivers a packet. when the
+  packet is recieved from listeners this fires and then runs a recursive loop
+  function alertsMathLoop
+  ***************/
   patterns(packet) {
     return this.func.patternMatchLoop(packet);
   },
-
 
   /***********
     func: triggers
@@ -178,35 +220,4 @@ module.exports = {
     }
   },
 
-  data(packet) {
-    // so we have the form key and the data to update now for data
-    const self = this;
-    const func = {
-      input(data) {
-        return new Promise((resolve, reject) => {
-          const params = data.q.text.split('|');
-          self.func.write(false, params[0]).then(answer => {
-            return self.func.write(false, params[1]);
-          }).then(result => {
-            return resolve(result);
-          }).catch(reject)
-        });
-      },
-      descrip(data) {
-        return new Promise((resolve, reject) => {
-          const params = data.q.text.split('|');
-          self.func.write(false, params[0]).then(sel => {
-            return self.func.write(false, '/c') // clear the buffer
-          }).then(buf => {
-            return self.func.write(false, params[1])
-          }).then(result => {
-            return self.func.write(false, '/s') // clear the buffer
-          }).then(saved => {
-            return resolve(saved);
-          }).catch(reject)
-        });
-      }
-    }
-    return func[packet.q.meta.params[0]](packet);
-  },
 }

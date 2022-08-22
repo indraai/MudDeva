@@ -1,5 +1,11 @@
 // Copyright (c)2022 Quinn Michaels. All rights reserved.
+// The Mud Deva Listeners
 module.exports = {
+  /**************
+  func: mud:relay
+  params: packet
+  describe: This is a listener to relay data into the mud realm.
+  ***************/
   'mud:relay'(packet) {
     const {patterns, terminal} = this.func;
     if (!packet || !this.active) return;
@@ -13,7 +19,7 @@ module.exports = {
     if (packet.a.text.length == 0) return;
 
     this.func.triggers(packet.a.text);
-    
+
     // parse alerts
     patterns(packet).then(aPacket => {
       return terminal(aPacket);
