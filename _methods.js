@@ -1207,7 +1207,7 @@ module.exports = {
   help(packet) {
     return new Promise((resolve, reject) => {
       this.lib.help(packet.q.text, __dirname).then(help => {
-        return this.question(`!parse ${help}`);
+        return this.question(`#feecting parse ${help}`);
       }).then(parsed => {
         return resolve({
           text: parsed.a.text,
