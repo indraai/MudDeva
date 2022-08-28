@@ -1,6 +1,6 @@
 {
   "name": "@feecting/muddeva",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "The Mud Deva",
   "main": "index.js",
   "scripts": {
