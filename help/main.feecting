@@ -18,3 +18,6 @@ p:The '>' command writes a string to the mud server.
 > #mud time
 > #mud news
 > #mud motd
+
+#color = var(--color-black)
+#bgcolor = var(--color-white)
