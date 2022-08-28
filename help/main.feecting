@@ -1,5 +1,20 @@
-# mud
+## Mud Deva
 
-This is the main help file for MUD.
+p:The MUD Deva allos you to connect into a MUD server over telnet with special features specifically designed for MUD integration. Primarily this is used to connect into the Deva World Realm through our custom User Interface here.
 
-MUD Deva
+### Methods
+
+cmd:#mud play
+p:If you have a default username and passworld setup in the mud then you can use this command to login using the default account setup.
+
+tel:#mud > *string*
+p:The '>' command writes a string to the mud server.
+
+> #mud save
+> #mud quit
+> #mud mhelp
+> #mud commands
+> #mud where
+> #mud time
+> #mud news
+> #mud motd
