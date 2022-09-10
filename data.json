@@ -66,8 +66,6 @@
       "adventure": {
         "key": "thegame",
         "name": "Deva World",
-        "host": "143.198.52.33",
-        "port": 9003,
         "patterns": [
           {
             "name": "hit",

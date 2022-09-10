@@ -1182,6 +1182,15 @@ module.exports = {
   },
 
   /**************
+  method: quest
+  params: packet
+  describe: Call the dig function with the packet data.
+  ***************/
+  quest(packet) {
+    return this.func.write('quest', packet.q.text)
+  },
+
+  /**************
   method: uid
   params: packet
   describe: Return default system uid function.

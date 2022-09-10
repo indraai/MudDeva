@@ -7,7 +7,8 @@ p:The MUD Deva allos you to connect into a MUD server over telnet with special f
 cmd:#mud play
 p:If you have a default username and passworld setup in the mud then you can use this command to login using the default account setup.
 
-tel:#mud > *string*
+tty:#mud > *string*
+
 p:The '>' command writes a string to the mud server.
 
 > #mud save

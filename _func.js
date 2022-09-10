@@ -19,7 +19,7 @@ module.exports = {
       if (!this.client.services.mud) return resolve(this.vars.messages.no_service);
       this.func.state('connect');
       // this sends a open port message to the server with a custom event relay to the mud server
-      const text = `#telnet open:${this.agent.key} ${this.vars.adventure.host}:${this.vars.adventure.port} ${this.vars.relay}`;
+      const text = `#telnet open:${this.agent.key} ${this.client.services.mud.host}:${this.client.services.mud.port} ${this.vars.relay}`;
       this.question(text).then(connect => {
         this.func.state('connected');
         return resolve({
