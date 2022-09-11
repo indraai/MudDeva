@@ -1164,6 +1164,15 @@ module.exports = {
   },
 
   /**************
+  method: qlist
+  params: packet
+  describe: Call the qlist function with the packet data.
+  ***************/
+  qlist(packet) {
+    return this.func.write('qlist', packet.q.text);
+  },
+
+  /**************
   method: purge
   params: packet
   describe: Call the purge function with the packet data.

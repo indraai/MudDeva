@@ -156,6 +156,14 @@
             "reg": "\\n(save):\\s?(.+)"
           },
           {
+            "name": "points",
+            "reg": "\\n(points):\\s?(.+)"
+          },
+          {
+            "name": "gift",
+            "reg": "\\n(gift):\\s?(.+)"
+          },
+          {
             "name": "exp",
             "reg": "\\n(exp):\\s?(.+)"
           },
