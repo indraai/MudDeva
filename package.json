@@ -1,5 +1,5 @@
 {
-  "name": "@feecting/muddeva",
+  "name": "@indra.ai/muddeva",
   "version": "0.0.11",
   "description": "The Mud Deva",
   "main": "index.js",
@@ -20,7 +20,7 @@
     "url": "https://github.com/indraai/MudDeva/issues"
   },
   "dependencies": {
-    "@feecting/deva": "^1.0.25"
+    "@indra.ai/deva": "^1.0.25"
   },
   "homepage": "https://github.com/indraai/MudDeva#readme"
 }
