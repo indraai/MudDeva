@@ -65,7 +65,7 @@
       "loggedin": false,
       "adventure": {
         "key": "main",
-        "name": "Deva World",
+        "name": "deva.cloud",
         "patterns": [
           {
             "name": "hit",
