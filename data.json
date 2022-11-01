@@ -64,7 +64,7 @@
       "state_prev": false,
       "loggedin": false,
       "adventure": {
-        "key": "thegame",
+        "key": "main",
         "name": "Deva World",
         "patterns": [
           {
