@@ -70,6 +70,15 @@ module.exports = {
   },
 
   /**************
+  method: wizhelp
+  params: packet
+  describe: Call the mhelp function with the packet data.
+  ***************/
+  wizhelp(packet) {
+    return this.func.write('wizhelp', packet.q.text)
+  },
+
+  /**************
   method: commands
   params: packet
   describe: Call the commands function with the packet data to list mud commands.
